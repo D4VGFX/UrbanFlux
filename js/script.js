@@ -1,50 +1,76 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu mobile (per versioni future)
+    // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    if(menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-    }
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
 
-    // Animazioni al scroll
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.product-card, .feature');
+    // Aggiungi icone hamburger e chiudi
+    menuToggle.innerHTML = `
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    `;
+
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
         
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if(elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-
-    // Inizializza elementi con animazione
-    const animatedElements = document.querySelectorAll('.product-card, .feature');
-    animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'all 0.6s ease';
+        // Animazione hamburger a X
+        this.classList.toggle('active');
     });
 
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Esegui una volta al caricamento
+    // Chiudi menu cliccando sull'overlay
+    overlay.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+        this.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        menuToggle.classList.remove('active');
+    });
 
-    // Gestione form di contatto
-    const contactForm = document.querySelector('.contact-form');
-    if(contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Grazie per il tuo messaggio! Ti risponderemo al più presto.');
-            this.reset();
+    // Chiudi menu quando si clicca su un link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            menuToggle.classList.remove('active');
         });
-    }
+    });
 
-    // Aggiorna anno nel footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    // Aggiungi stili per il no-scroll
+    const style = document.createElement('style');
+    style.textContent = `
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+        
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        
+        .menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Resto del tuo codice JavaScript...
 });
