@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti | UrbanFlux</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">Urban<span>Flux</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chi_siamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html"><b>Contatti</b></a></li>
+                <li><a href="policy_azienda.html">Policy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Contattaci</h1>
+        <p>Hai domande, suggerimenti o vuoi collaborare con noi? Scrivici!</p>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="contact-info">
+            <h2>Informazioni di Contatto</h2>
+            <p><i class="fas fa-map-marker-alt"></i> Via Verde 123, 20100 Milano, Italia</p>
+            <p><i class="fas fa-phone"></i> +39 02 1234567</p>
+            <p><i class="fas fa-envelope"></i> info@urbanflux.com</p>
+            <p><i class="fas fa-clock"></i> Lunedì-Venerdì: 9:00-18:00</p>
+        </div>
+
+        <form class="contact-form">
+            <h2>Scrivici un Messaggio</h2>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Oggetto</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Messaggio</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Invia Messaggio</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Stesso footer della homepage -->
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
